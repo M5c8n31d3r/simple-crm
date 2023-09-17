@@ -1,0 +1,25 @@
+<h1>Users</h1>
+<mat-card class="formatTable">
+    <mat-card-content>
+        <table class="userTable">
+            <tr class="firstTable">
+                <th>Name</th>
+                <th>E-Mail</th>
+                <th>Birthdate</th>
+                <th>City</th>
+            </tr>
+
+            <!-- $any - nimmt alle Daten, die es bekommt unabhängig vom Datentyp -->
+            <tr  *ngFor="let user of $any(allUsers)" [routerLink]="['/user/' + user.customerIDName]"> 
+                <td>{{ user.firstName }} {{ user.lastName }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.birthDate}}</td>
+                <td>{{ user.city }}</td>
+            </tr>
+        </table>
+    </mat-card-content>
+</mat-card>
+
+<button (click)="openDialog()" class="add-user-btn" mat-fab color="primary" matTooltip="Add User" matTooltipPosition="above">
+    <mat-icon>add</mat-icon>
+  </button>

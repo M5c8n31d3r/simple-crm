@@ -1,0 +1,67 @@
+.add-user-btn {
+    position: absolute;
+    right: 56px;
+    bottom: 56px;
+    
+}
+
+
+
+.formatTable {
+    width: 100%;
+    overflow-wrap: break-word;
+    overflow-x: auto;
+  }
+
+  .firstTable {
+    color: #673AB7;
+    
+  }
+  
+  .userTable {
+    width: 100%;
+    /* entfernt weißen abstand zwischen den zellen */
+    border-collapse: collapse;
+    
+  .example-button {
+    display: block;
+    margin: 80px auto 400px;
+  }
+  
+  .example-container {
+    height: 200px;
+    overflow: auto;
+    border: 1px solid #ccc;
+  }
+  
+    tr {
+      cursor: pointer;
+  
+      &:first-child {
+        cursor: unset;
+  
+        &:hover {
+          background-color: unset;
+        }
+      }
+  
+      &:nth-child(even) {
+        background-color: rgba($color: #000000, $alpha: 0.025);
+      }
+  
+      &:hover {
+        background-color: rgba($color: #000000, $alpha: 0.07);
+      }
+  
+    }
+  
+    th {
+      text-align: start;
+      padding: 10px;
+    }
+  
+    td {
+      padding: 10px;
+    }
+  
+  }
