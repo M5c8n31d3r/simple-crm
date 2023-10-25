@@ -7,13 +7,18 @@
             <form class="example-form" (submit)="submitForm($event)">
                 <div>
 
-                    <div class="project-title-container">
+                    <!-- <div class="project-title-container">
                         <div class="project-title">
                             <span class="title">Simpel CRM</span>
                         </div>
+                    </div> -->
+
+                    <div _ngcontent-ng-c3406131081="" class="logo-container ng-tns-c2384444419-7">
+                        <span>Simple CRM</span><img _ngcontent-ng-c3406131081="" src="./assets/img/favIcon.png"
+                            style="cursor: pointer;">
                     </div>
                     <h2>Register</h2>
-                    <mat-form-field class="example-full-width margin-bottom">
+                    <mat-form-field style="margin-left: 1rem;" class="example-full-width margin-bottom">
                         <mat-label>Email</mat-label>
                         <input type="email"  matInput placeholder="max@mustermann.de" [(ngModel)]="email" name="email" [formControl]="emailFormControl">
                         <mat-error *ngIf="emailFormControl.invalid">{{getEmailErrorMessage()}}</mat-error>
@@ -21,7 +26,7 @@
                 </div>
 
                 <div>
-                    <mat-form-field class="example-full-width margin-bottom">
+                    <mat-form-field style="margin-left: 1rem;" class="example-full-width margin-bottom">
                         <mat-label>Password</mat-label>
                         <input type="password" matInput [(ngModel)]="password" name="password" [formControl]="passwordFormControl">
                         <mat-error *ngIf="passwordFormControl.invalid">{{getPasswordErrorMessage()}}</mat-error>
