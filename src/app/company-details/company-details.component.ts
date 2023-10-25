@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Firestore, collection, doc, docData, updateDoc, arrayUnion, collectionData } from '@angular/fire/firestore';
+import { Firestore, collection, doc, docData, updateDoc, collectionData } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Company } from 'src/models/company.class';
@@ -55,8 +55,6 @@ export class CompanyDetailsComponent {
   }
 
 
-
-
   editCompany(){
     const dialog = this.dialog.open(DialogEditCompanyComponent)
     dialog.componentInstance.company = new Company(this.company.toJSON());
@@ -68,7 +66,6 @@ export class CompanyDetailsComponent {
     dialog.componentInstance.company = new Company(this.company.toJSON());
     dialog.componentInstance.companyId = this.companyId;
   }
-
 
 
   openDeleteDialog() {
@@ -109,7 +106,6 @@ deassignUserFromCompany(userId: string) {
       console.error('Error de-assigning user from company:', error);
     });
 }
-
 
 
 // Methode zum Anrufen der Telefonnummer
