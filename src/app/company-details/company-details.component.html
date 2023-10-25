@@ -1,0 +1,117 @@
+<button routerLink="/company" class="back-button" mat-raised-button><img class="back-image" src="assets/img/back.png"
+    alt="">
+</button>
+
+<div class="color-line"></div>
+
+<!-----------------COMPANY HEADER------------------>
+<mat-card>
+  <mat-card-content class="company-detail-header">
+
+    <button mat-icon-button class="pin-right-upper-corner" [matMenuTriggerFor]="userMenu">
+      <mat-icon>edit</mat-icon>
+    </button>
+
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item (click)="editCompany()">Edit</button>
+    </mat-menu>
+
+    <div class="company-details">
+      <img class="company-detail-image" src="./assets/img/building.png" alt="">
+      <div class="company-address">
+      <h2>
+        {{company.name}}
+      </h2>
+      {{company.phoneNumber}}<br>
+      {{company.email}}
+      <br>
+    </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+<!------------------------CALL / MAIL / DELETE BUTTONS-------------------->
+<div class="buttons">
+  <div>
+    <button (click)="callPhoneNumber()"class="call-button" mat-raised-button><img class="phone-image" src="assets/img/call.png" alt=""> 
+    </button>
+    
+    <button (click)="sendEmail()" class="call-button" mat-raised-button><img class="phone-image" src="assets/img/mail.png" alt=""> 
+    </button>
+  </div>
+  
+  <button class="call-button" mat-raised-button (click)="openDeleteDialog()">
+    <img class="phone-image" src="assets/img/delete.png" alt="" > 
+  </button>
+</div>
+
+
+<!-------------------------CURRENTLY ASSIGNED -------------------------->
+
+<mat-card class="mt-32">
+
+  <mat-card-content class="assigned-users center">
+    <mat-card-header>
+      <mat-card-title>
+        Currently Assigned Users <img class="avatar-image" src="./assets/img/avatar.png" alt="">
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <b *ngIf="company.assignedUsers.length > 0; else noUsersAssigned">
+        {{company.assignedUsers.join(', ')}}
+      </b>
+
+      <ng-template #noUsersAssigned>
+        <b class="no-user-assigned">No user assigned, go to a Users Profil to assign User to Company</b>
+      </ng-template>
+    </mat-card-content>
+  </mat-card-content>
+
+</mat-card>
+
+
+<!-------------------------ASSIGN USER TO COMPANY----------------------->
+<mat-card class="mt-32">
+  <mat-form-field>
+  <mat-label>Select User to Deassign</mat-label>
+  <mat-select [(ngModel)]="selectedUserId">
+    <mat-option *ngFor="let assignedUserId of company.assignedUsers" [value]="assignedUserId">{{ assignedUserId }}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<!--------------- Button zum De-Assignen eines Benutzers -------------->
+<button mat-raised-button (click)="deassignUserFromCompany(selectedUserId)">Deassign User</button>
+
+
+</mat-card>
+
+
+
+<!-----------------------ADRESS---------------------->
+
+<mat-card class="mt-32">
+
+  <button mat-icon-button class="pin-right-upper-corner" [matMenuTriggerFor]="menu">
+    <mat-icon>edit</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="editMenu()">Edit</button>
+  </mat-menu>
+
+  <mat-card-header>
+    <mat-card-title>
+        Adress 
+    </mat-card-title>
+
+  </mat-card-header>
+
+  <mat-card-content>
+    {{company.street}} <br>
+    {{company.zipCode}} {{company.city}}
+  </mat-card-content>
+
+</mat-card>
+<div class="color-line"></div>

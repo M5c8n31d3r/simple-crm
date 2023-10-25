@@ -1,0 +1,48 @@
+<div class="header-container">
+  <div class="headline">Notes</div>
+  <img class="question-mark" (click)="toggleInstructions()" src="assets/img/question.png"
+    alt="picture of question mark">
+</div>
+
+
+
+<div class="notes-information" [ngClass]="{'slide-in': showInstructions}" *ngIf="showInstructions">
+
+  <h2> <b> Welcome to the Notes Page of my CRM System! </b> </h2>
+
+  <b>Welcome to the Notes feature of our CRM system! This tool makes jotting down and managing notes a breeze. Here's a
+    brief guide on how to utilize it:</b> <br> <br>
+
+  <b>Adding Notes:</b> <br>
+  Select the "+ Add Note" button to create your note. This note can be any crucial information or reminder. Once you've
+  finished composing your note, click the "Save" button. Your note will then be visible on the page.<br>
+
+  <b>Viewing Notes:</b> <br>
+  You'll find a list of your added notes on the page, with the most recent notes located at the bottom.<br>
+
+  <b>Deleting Notes:</b> <br>
+  To remove a note, click the "Delete Note" button in the note you want to delete.<br> <br>
+
+</div>
+
+<div class="color-line"></div>
+
+
+<button (click)="openDialog()" class="add-button" mat-fab color="primary" matTooltip="Add Notes">
+  <mat-icon>add</mat-icon>
+</button>
+
+<div class="notes-board container">
+
+  <div class="note" *ngFor="let note of notes">
+
+
+    <p class="note-title">{{ note.title }}</p>
+    <p class="note-description">{{ note.description }}</p>
+    <button (click)="deleteNote(note.id)" mat-stroked-button color="warn">Delete Note</button>
+  </div>
+
+</div>
+<br>
+<br>
+<div class="color-line"></div>

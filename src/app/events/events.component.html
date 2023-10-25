@@ -1,0 +1,83 @@
+<div class="header-container">
+  <div class="headline">Events</div>
+  <img class="question-mark" (click)="toggleInstructions()" src="assets/img/question.png"
+    alt="picture of question mark">
+</div>
+
+<div class="customer-information" [ngClass]="{'slide-in': showInstructions}" *ngIf="showInstructions">
+  <h2> <b> Welcome to the Events Overview page of my CRM system! </b> </h2>
+
+
+  <b>
+    This page acts as a central hub for effectively managing your events. Here's a straightforward guide on how to
+    navigate and make the most of this page: </b> <br> <br>
+
+  <b> Adding Events: </b> <br>
+  To begin, click the "Add Event" button situated in the bottom right corner of the page. Complete the required event
+  details, such as the event name, date, location, and any other pertinent information. After you've finished, press
+  "Save" to include the event in your list. <br>
+
+  <b>Viewing Events:</b> <br>
+  The main section of the page showcases a list of all your events, where you can access vital information such as event
+  names and key details. Simply scroll through this list for a swift overview of your events.<br>
+
+  <b>Detailed Event Information: </b> <br>
+  Upon clicking on an event, you'll gain access to more comprehensive information about that specific event, including
+  details about attendees, the schedule, and any related data. Additionally, you'll have the option to delete the event
+  if needed to maintain an updated event list.<br>
+</div>
+
+<div class="color-line"></div>
+
+<mat-card class="search">
+  <mat-card-content>
+    <div class="search-container">
+      <input type="text" class="inputfield" placeholder="Name" [(ngModel)]="searchQuery" (input)="performSearch()">
+      <img class="search-image" src="assets/img/search1.png">
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+<!-- ---------------EVENTS LIST ------------------>
+<div class="mt-32" *ngFor="let event of filteredEvents" routerLink='{{event.id}}'>
+
+  <!--COMPANY ADRESS-->
+  <div class="company">
+    <div>
+      <h1 class="company-title">
+        {{event.title}}
+      </h1>
+
+    </div>
+
+  </div>
+
+  <div>
+    <div class="schraeger-balken">
+
+      <div class="currently-assigned-container">
+        <p class="currently-assigned">
+          DATE
+        </p>
+
+        <div class="assigned-user" *ngIf="event.assignedUsers.length > 0; else noUsersAssigned">
+          <b class="date"> {{ getFormattedDate(event.date.toDate()) }}</b>
+        </div>
+      </div>
+
+      <ng-template #noUsersAssigned>
+        <b class="no-user-assigned">No user assigned, go to a Users Profil to assign User to Company</b>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="building-image-container">
+    <img class="building-image" src="assets/img/event-card.png" alt="">
+  </div>
+
+</div>
+<div class="color-line"></div>
+<button (click)="openDialog()" class="add-button" mat-fab color="primary" matTooltip="Add Event">
+  <mat-icon>add</mat-icon>
+</button>

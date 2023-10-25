@@ -1,1 +1,131 @@
-<p>dashboard works!</p>
+<div class="header-container">
+  <div class="headline">Dashboard
+  </div>
+  <div class="date"> {{getFormattedDate() }}</div>
+  <img class="question-mark" (click)="toggleInstructions()" src="assets/img/question.png"
+    alt="picture of question mark">
+</div>
+
+<div class="dashboard-information" [ngClass]="{'slide-in': showInstructions}" *ngIf="showInstructions">
+  <h2> <b> Welcome to my CRM Dashboard! </b> </h2>
+  <b>Here, you can track the number of users, companys, events, notes and all Software Developers.</b>
+  
+</div>
+
+<div class="color-line"></div>
+<div class="complete-dashboard">
+
+  <div class="dashboard-1">
+
+    <div class="first-row">
+      <div class="container" routerLink="/user">
+        <div class="text">USERS</div>
+        <div class="number">{{ userCount }}</div>
+      </div>
+
+      <div class="container" routerLink="/notes">
+        <div class="text">NOTES</div>
+        <div class="number">{{ noteCount }}</div>
+      </div>
+
+      <div class="container" routerLink="/company">
+        <div class="text">COMPANYS</div>
+        <div class="number">{{ companyCount }}</div>
+      </div>
+
+      <div class="container" routerLink="/events">
+        <div class="text">EVENTS</div>
+        <div class="number">{{ eventCount }}</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="color-line"></div>
+
+<!-- CHART No. 1 -->
+  <div class="chart">
+    <canvas id="monthlySales"> </canvas>
+  </div>
+
+</div>
+<div class="color-line"></div>
+
+<div class="complete-dashboard">
+
+  <!-- CHART No. 2 -->
+  <div class="chart">
+    <canvas id="pieChart"> </canvas>
+  </div>
+
+  <div class="color-line"></div>
+
+  <div class="dashboard-1">
+
+    <div class="first-row">
+      <div class="container" routerLink="/user">
+        <div class="text-2">Front-end Developers</div>
+        <div class="number">{{ frontendDeveloperCount }}</div>
+      </div>
+
+      <div class="container" routerLink="/user">
+        <div class="text-2">Back-end Developers</div>
+        <div class="number">{{ backendDeveloperCount }}</div>
+      </div>
+
+      <div class="container" routerLink="/user">
+        <div class="text-2">Full-sack Developer</div>
+        <div class="number">{{ backendDeveloperCount }}</div>
+      </div>
+
+      <div class="container" routerLink="/user">
+        <div class="text-2">Mobile App-Developer        </div>
+        <div class="number">{{ mobileAppEntwicklerCount }}</div>
+      </div>
+
+      <div class="container" routerLink="/user">
+        <div class="text-2">Projekt Managers</div>
+        <div class="number">{{ projectManagerCount }}</div>
+      </div>
+    </div>
+
+
+  
+
+    <div class="second-row">
+      <div class="container" routerLink="/user">
+        <div class="text-2">System Administrators</div>
+        <div class="number">{{ systemAdministratorCount }}</div>
+      </div>
+
+      <div class="container" routerLink="/user">
+        <div class="text-2">DevOps Engineer</div>
+        <div class="number">{{ systemAdministratorCount }}</div>
+      </div>
+
+      <div class="container" routerLink="/user">
+        <div class="text-2">KI-Developer</div>
+        <div class="number">{{ kiEntwicklerCount }}</div>
+      </div>
+
+      <div class="container" routerLink="/user">
+        <div class="text-2">Data Analysts</div>
+        <div class="number">{{ dataAnalystCount }}</div>
+      </div>
+
+      <div class="container" routerLink="/user">
+        <div class="text-2">UI/UX Designer</div>
+        <div class="number">{{ designerCount }}</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="color-line"></div>
+  
+<!-- CHART No. 3 -->
+  <div class="chart">
+    <canvas id="employees"> </canvas>
+  </div>
+
+  <div class="color-line"></div>
+</div>

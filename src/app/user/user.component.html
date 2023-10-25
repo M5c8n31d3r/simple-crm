@@ -1,25 +1,70 @@
-<h1>Users</h1>
-<mat-card class="formatTable">
-    <mat-card-content>
-        <table class="userTable">
-            <tr class="firstTable">
-                <th>Name</th>
-                <th>E-Mail</th>
-                <th>Birthdate</th>
-                <th>City</th>
-            </tr>
+<div class="header-container">
+  <div class="headline">Users</div>
 
-            <!-- $any - nimmt alle Daten, die es bekommt unabhängig vom Datentyp -->
-            <tr  *ngFor="let user of $any(allUsers)" [routerLink]="['/user/' + user.customerIDName]"> 
-                <td>{{ user.firstName }} {{ user.lastName }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.birthDate}}</td>
-                <td>{{ user.city }}</td>
-            </tr>
-        </table>
-    </mat-card-content>
+  <img class="question-mark" (click)="toggleInstructions()" src="assets/img/question.png"
+    alt="picture of question mark">
+</div>
+
+
+<div class="customer-information" [ngClass]="{'slide-in': showInstructions}" *ngIf="showInstructions">
+  <h2> <b> Welcome to the Customer Overview page of my CRM system! </b> </h2>
+
+  <b> This page serves as the central hub for efficiently managing your contacts. Here's a brief guide on how to
+    navigate and use this page: </b> <br> <br>
+
+  <b> Adding Contacts: </b> <br>
+  To add contacts, start by clicking the "Add Contact" button located in the top right corner of the page. Enter the
+  necessary information and click "Save" to add the contact to your list. <br>
+
+  <b>Viewing Contacts:</b> <br>
+
+  A list of your contacts will appear in the main section of the page. Here you will find important information such as
+  names and important details, which can also be changed.<br>
+
+  <b>Editing Contacts: </b> <br>
+  If you need to update information for a specific contact, simply click on their name in the list. This will take you
+  to an editable view of their details, where you can make any necessary changes, corrections, or updates as needed.<br>
+</div>
+
+<div class="color-line"></div>
+
+<mat-card class="search">
+  <mat-card-content>
+    <div class="search-container">
+      <input type="text" class="inputfield" placeholder="Name" [(ngModel)]="searchQuery" (input)="performSearch()">
+
+      <img class="search-image" src="assets/img/search.png">
+    </div>
+  </mat-card-content>
 </mat-card>
 
-<button (click)="openDialog()" class="add-user-btn" mat-fab color="primary" matTooltip="Add User" matTooltipPosition="above">
-    <mat-icon>add</mat-icon>
-  </button>
+
+<mat-card>
+  <mat-card-content>
+    <table class="user-table">
+
+      <tr class="info-table">
+        <th>Name</th>
+        <th>Job Title</th>
+        <th>City</th>
+        <th>E-Mail</th>
+      </tr>
+
+      <tr class="user" routerLink='{{user.id}}' *ngFor="let user of filteredUsers">
+        <td>{{user.firstName}} {{user.lastName}}</td>
+        <td>{{user.jobTitle}}</td>
+        <td>{{user.city}}</td>
+        <td>{{user.email}}</td>
+      </tr>
+
+
+    </table>
+  </mat-card-content>
+
+</mat-card>
+
+<button (click)="openDialog()" class="add-button" mat-fab color="primary" matTooltip="Add User">
+  <mat-icon>add</mat-icon>
+</button>
+
+<div class="color-line"></div>

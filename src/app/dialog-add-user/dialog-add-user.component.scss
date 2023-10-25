@@ -1,9 +1,21 @@
-.dialog-container{
-    position: relative;
+.form-field{
+    margin-top: 16px;
 }
 
-// .formFields {
-//     display: flex;
-//     flex-direction: column;
-//     gap:20px;
-// }
+.mr-16{
+    margin-right: 16px;
+}
+
+.full-width{
+    width: 100%;
+}
+
+.margin-bottom{
+    margin-bottom: 16px;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}

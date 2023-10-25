@@ -1,0 +1,275 @@
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+mat-card-content {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.headline {
+    display: flex;
+    align-items: center;
+
+    font-size: 40px;
+    color: black;
+    margin-top: 16px;
+    margin-bottom: 32px;
+    font-weight: 550;
+
+    img {
+        margin-left: 16px;
+        height: 40px;
+    }
+}
+
+//--------------------------- DASHBOARD INFORMATION ------------------------//
+
+.dashboard-information {
+    border: 4px solid #22b85b;
+    padding: 16px;
+    background-color: #ffffff;
+    margin-bottom: 32px;
+    border-radius: 8px;
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translate3d(100%, 0, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.slide-in {
+    animation: slideInFromRight 0.4s ease-in-out;
+}
+
+//------------------------------------ DASHBOARD ----------------------------//
+
+.complete-dashboard {
+    display: flex;
+
+    justify-content: space-between;
+}
+
+.dashboard-1 {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 5vh;
+
+    background-color: #ebf0f5;
+    border: 3px solid #e6e6eb;
+    border-radius: 10px;
+
+    .container {
+        width: 20em;
+        margin: 16px;
+        text-align: center;
+        border-radius: 4px;
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            width 0.3s ease,
+            height 0.3s ease;
+        box-shadow: 0px 3px 6px #673ab7;
+
+        &:hover {
+            transform: scale(1.01);
+            box-shadow: 0px 6px 12px #22b85b;
+            cursor: pointer;
+        }
+    }
+
+    .text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px 8px 0px 0px;
+
+        background-color: #673ab7;
+        color: white;
+
+        padding: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        height: 4vh;
+    }
+
+    .number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background-color: white;
+        color: black;
+        border-radius: 4px;
+        padding: 8px;
+        font-size: 40px;
+        font-weight: bold;
+        height: 10vh;
+    }
+}
+
+.text-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #673ab7;
+    color: white;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    height: 3vh;
+}
+
+.dashboard-1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.first-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.second-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card-donut {
+    width: 40%;
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+}
+
+// ------------------------ QUESTION MARK -------------------- //
+
+.question-mark {
+    height: 45px;
+    width: 45px;
+    margin-left: 16px;
+    margin-bottom: 32px;
+
+    &:hover {
+        cursor: pointer;
+        opacity: 0.9;
+    }
+}
+
+//--------------------------- CHART ------------------------- //
+
+.chart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    margin-bottom: 5vh;
+    background-color: #ebf0f5;
+    border: 3px solid #e6e6eb;
+    border-radius: 10px;
+}
+
+#monthlySales {
+    background-color: white;
+    padding: 16px;
+}
+
+#employees {
+    background-color: white;
+    padding: 16px;
+}
+
+#pie {
+    background-color: white;
+    padding: 16px;
+}
+
+.center {
+    text-align: center;
+}
+
+.date {
+    font-weight: 100;
+    color: grey;
+    font-size: 32px;
+    margin-left: 8px;
+}
+
+//------------------------------------ RESPONSIVE---------------------------------//
+
+//---------------- 2300 PX ------------------ //
+
+@media only screen and (max-width: 2300px) {
+    #monthlySales {
+        height: 23em ;
+        width: 44em ;
+    }
+
+    #employees {
+        height: 23em ;
+        width: 44em ;
+    }
+
+    .dashboard-1 {
+        .container {
+            width: 17em;
+        }
+    }
+}
+
+//---------------- 2025 PX ------------------ //
+
+@media only screen and (max-width: 2025px) {
+    .dashboard-1 {
+        .container {
+            width: 14em;
+            height: auto;
+        }
+    }
+
+    .complete-dashboard {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+}
+
+//---------------- 800 PX ------------------ //
+
+@media only screen and (max-width: 800px) {
+    .header-container {
+        flex-direction: column;
+    }
+    .date {
+        font-size: 18px;
+    }
+
+    .question-mark {
+        height: 45px;
+        width: 45px;
+        margin: 16px 0px 24px;
+    }
+
+}
+
+@media only screen and (max-width: 800px) {
+
+    #monthlySales,
+    #employees {
+        transform: rotate(90deg);
+        margin: 11rem -9rem 11rem -9rem;
+    }
+
+}

@@ -1,0 +1,93 @@
+<div class="header-container">
+  <div class="headline">Companys</div>
+  <img class="question-mark" (click)="toggleInstructions()" src="assets/img/question.png"
+    alt="picture of question mark">
+</div>
+
+<div class="customer-information" [ngClass]="{'slide-in': showInstructions}" *ngIf="showInstructions">
+
+  <h2> <b> Welcome to the Company Overview page of my CRM system! </b> </h2>
+
+  <b>
+    This page serves as a central hub for efficient company management.
+    Here's a concise guide on how to navigate and make the most of this page: </b> <br>
+  <br>
+  <b>Adding Companies:</b> <br>
+  First, select the “Add Company” button in the top right corner of the page. Enter all required information. Then click
+  “Save” to add the company to your list. <br>
+
+  <b>Viewing Companies:</b> <br>
+  The main section of the page showcases a list of your companies, where you can access vital details such as names and
+  key information. Simply scroll through this list for a swift overview of your companies.<br>
+
+  <b>Editing Companies:</b> <br>
+  If you need to modify information for a specific company, just click on the company's name in the list. This will lead
+  you to an editable view of their details, allowing you to make any necessary changes, corrections, or updates. <br>
+
+  <b>Managing Users:</b> <br>
+  Moreover, you have the capability to oversee users linked to each company. You can assign or unassign users as
+  required to enhance collaboration and communication within the company's context. <br>
+</div>
+
+<div class="color-line"></div>
+
+
+<mat-card class="search">
+  <mat-card-content>
+    <div class="search-container">
+      <input type="text" class="inputfield" placeholder="Name" [(ngModel)]="searchQuery" (input)="performSearch()">
+      <img class="search-image" src="assets/img/search2.png">
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+<!----------------- COMPANYS LIST ------------------>
+
+<div class="mt-32" *ngFor="let company of filteredCompanys" routerLink='{{company.id}}'>
+
+  <!--COMPANY ADRESS-->
+
+  <div class="company">
+    <div>
+      <h1 class="company-title">
+        {{company.name}}
+      </h1>
+
+      <b class="company-address">
+        {{company.street}} <br>
+        {{company.zipCode}} <br>
+        {{company.city}} <br>
+      </b>
+    </div>
+
+  </div>
+
+  <div>
+    <div class="schraeger-balken">
+
+      <div class="currently-assigned-container">
+        <p class="currently-assigned"> Assigned Users
+
+        </p>
+      </div>
+
+      <div class="assigned-user" *ngIf="company.assignedUsers.length > 0; else noUsersAssigned">
+        {{company.assignedUsers.join(', ')}} <br>
+      </div>
+      <ng-template #noUsersAssigned>
+        <b class="no-user-assigned">No user assigned...</b>
+      </ng-template>
+
+    </div>
+  </div>
+
+  <div class="building-image-container">
+    <img class="building-image" src="assets/img/building.png" alt="">
+  </div>
+
+</div>
+<div class="color-line"></div>
+<button (click)="openDialog()" class="add-button" mat-fab color="primary" matTooltip="Add Company">
+  <mat-icon>add</mat-icon>
+</button>

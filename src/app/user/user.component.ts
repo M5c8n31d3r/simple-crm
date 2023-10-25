@@ -1,12 +1,7 @@
-import { DialogAddUserComponent } from './../dialog-add-user/dialog-add-user.component';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { User } from 'src/models/user.class';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatTable } from '@angular/material/table';
-import { Firestore, collectionData, collection, } from '@angular/fire/firestore';
-
+import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-user',
@@ -14,25 +9,43 @@ import { Firestore, collectionData, collection, } from '@angular/fire/firestore'
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent {
-  user = new User(); 
-  allUsers = [];
+  searchQuery: string = '';
+  filteredUsers: any;
+  users: any;
+  showInstructions: boolean = false; // Neue Variable hinzugefügt
 
-  constructor(public dialog: MatDialog, private firestore: Firestore, private router: Router, private route: ActivatedRoute,) {}
+  constructor(public dialog: MatDialog, private firestore: Firestore) { }
 
   ngOnInit(): void {
-    
-    
-    const collectionInstance = collection(this.firestore, 'users');
-    collectionData(collectionInstance)
-    
-    .subscribe((changes: any) => {
-      console.log('Received changes from DB', changes);
-      this.allUsers = changes;
-    });
+    let usersCollection = collection(this.firestore, 'users');
+
+    collectionData(usersCollection, { idField: 'id' }).subscribe(users => {
+      this.users = users;
+      this.performSearch(); // Hier den Filter aufrufen
+      console.log('Users have been updated :)', users)
+    })
   }
 
-  openDialog(): void {
+  
+  openDialog() {
     this.dialog.open(DialogAddUserComponent);
   }
-}
 
+
+  toggleInstructions() {
+    this.showInstructions = !this.showInstructions;
+  }
+  
+
+  performSearch() {
+    if (this.searchQuery.trim() === '') {
+      this.filteredUsers = this.users;
+    } else {
+      const query = this.searchQuery.toLowerCase();
+      this.filteredUsers = this.users.filter((user: any) =>
+        user.firstName.toLowerCase().includes(query) ||
+        user.lastName.toLowerCase().includes(query)
+      );
+    }
+  }
+}

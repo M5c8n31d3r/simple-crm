@@ -1,0 +1,22 @@
+.headline {
+    display: flex;
+    align-items: center;
+
+    font-size: 40px;
+    color: black;
+    margin-top: 16px;
+    margin-bottom: 32px;
+    font-weight: 550;
+
+    img {
+        margin-left: 16px;
+        height: 40px;
+    }
+}
+
+.legal-notice{
+    padding: 16px;
+    border: 5px solid #FFFFFF;
+    background-color: white;
+}
+

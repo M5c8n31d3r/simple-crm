@@ -1,0 +1,117 @@
+<div class="button-container">
+  <button routerLink="/user" class="back-button" mat-raised-button><img class="phone-image" src="assets/img/back.png"
+      alt="">
+  </button>
+</div>
+<div class="color-line"></div>
+
+
+<mat-card>
+  <mat-card-content class="user-detail-header">
+
+    <button mat-icon-button class="pin-right-upper-corner" [matMenuTriggerFor]="userMenu">
+      <mat-icon>edit</mat-icon>
+    </button>
+
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item (click)="editUser()">Edit</button>
+    </mat-menu>
+
+    <img class="user-detail-image" src="./assets/img/avatar.png" alt="">
+    <div class="user-details">
+      <h2>
+        {{user.firstName}}
+        {{user.lastName}}
+      </h2>
+      {{user.phoneNumber}}
+      <br>
+      {{user.email}}
+    </div>
+
+    
+  </mat-card-content>
+</mat-card>
+
+
+<!----------------- CALL + MAIL CUSTOMER ------------------>
+
+<div class="buttons">
+  <div>
+    <button (click)="callPhoneNumber()" class="call-button" mat-raised-button><img class="phone-image"
+        src="assets/img/call.png" alt="">
+      Call {{user.firstName}}
+    </button>
+
+
+    <button (click)="sendEmail()" class="call-button" mat-raised-button><img class="phone-image"
+        src="assets/img/mail.png" alt="">
+      Mail {{user.firstName}}
+    </button>
+  </div>
+
+  <button class="delete-button" mat-raised-button (click)="openDeleteDialog()">
+    <img class="phone-image" src="assets/img/delete.png" alt="">
+    Delete this User
+  </button>
+</div>
+
+
+<!------------------- JOB TITLE --------------------->
+
+<mat-card class="mt-32 center">
+ 
+  <mat-card-header>
+    <mat-label class="center"><b>Job Title</b></mat-label>
+
+  </mat-card-header>
+
+  <mat-card-content>
+    {{user.jobTitle}}
+  </mat-card-content>
+
+</mat-card>
+
+<!-- --------------- ASSIGN USER TO COMPANY ------------------>
+<mat-card class="mt-32">
+  <mat-form-field>
+    <mat-label>Click here to choose a Company and click on the assign button below. (If you want to assign User to a Company)</mat-label>
+    <mat-select [(ngModel)]="selectedCompanyId">
+      <mat-option *ngFor="let company of companys" [value]="company.id">{{ company.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button (click)="assignUserToCompany()">Assign</button>
+
+
+</mat-card>
+
+<div id="success-report" *ngIf="showSuccessMessage">{{ successMessage }}!</div>
+
+<!----------------------- ADRESS ------------------------>
+
+<mat-card class="mt-32">
+
+  <button mat-icon-button class="pin-right-upper-corner" [matMenuTriggerFor]="menu">
+    <mat-icon>edit</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="editMenu()">Edit</button>
+  </mat-menu>
+
+  <mat-card-header>
+    <mat-card-title>
+      Adress
+    </mat-card-title>
+
+  </mat-card-header>
+
+  <mat-card-content>
+    {{user.firstName}}
+    {{user.lastName}}<br>
+    {{user.street}} <br>
+    {{user.zipCode}} {{user.city}}
+  </mat-card-content>
+
+</mat-card>
+<div class="color-line"></div>

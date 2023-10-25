@@ -1,0 +1,43 @@
+<div class="login-container">
+
+    <mat-card class="formular-card">
+        <mat-progress-bar *ngIf="loading" mode="indeterminate" class="progress-bar"></mat-progress-bar>
+
+        <div class="formular">
+            <form class="example-form" (submit)="submitForm($event)">
+                <div>
+
+                    <div class="project-title-container">
+                        <div class="project-title">
+                            <span class="title">Simpel CRM</span>
+                        </div>
+                    </div>
+                    <h2>Register</h2>
+                    <mat-form-field class="example-full-width margin-bottom">
+                        <mat-label>Email</mat-label>
+                        <input type="email"  matInput placeholder="max@mustermann.de" [(ngModel)]="email" name="email" [formControl]="emailFormControl">
+                        <mat-error *ngIf="emailFormControl.invalid">{{getEmailErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="example-full-width margin-bottom">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput [(ngModel)]="password" name="password" [formControl]="passwordFormControl">
+                        <mat-error *ngIf="passwordFormControl.invalid">{{getPasswordErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+
+        <div class="login-button">
+            <button mat-raised-button color="primary" [disabled]="!canAddUser() || loading">Register</button>
+        </div>
+
+        </form>
+
+    </div>
+        <div class="back-to-login-button">
+            <button mat-raised-button color="primary" routerLink="/login">Back to Login</button>
+        </div>
+
+    </mat-card>
+</div>
